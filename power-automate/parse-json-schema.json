@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "properties": {
+    "debug": {
+      "type": "object"
+    },
+    "groupMessage": {
+      "type": "string"
+    },
+    "attendees": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "group": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "email",
+          "group",
+          "date",
+          "message"
+        ]
+      }
+    }
+  },
+  "required": [
+    "groupMessage",
+    "attendees"
+  ]
+}

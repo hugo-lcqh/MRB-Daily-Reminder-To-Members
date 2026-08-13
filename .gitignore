@@ -1,0 +1,15 @@
+.env
+.env.*
+!.env.example
+*.log
+node_modules/
+dist/
+build/
+.DS_Store
+Thumbs.db
+*.xlsx
+*.xlsm
+*.xls
+*.csv
+!samples/*.csv
+*.zip

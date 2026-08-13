@@ -1,0 +1,60 @@
+{
+  "name": "MRB Daily Reminder To Members",
+  "description": "Scheduled Power Automate flow that reads an Excel MRB schedule, sends private Teams reminders, and posts a group summary.",
+  "steps": [
+    {
+      "name": "Recurrence",
+      "type": "Schedule",
+      "notes": [
+        "Frequency: Day",
+        "Interval: 1",
+        "Time zone: (UTC+07:00) Bangkok, Hanoi, Jakarta"
+      ]
+    },
+    {
+      "name": "Run script",
+      "type": "Excel Online (Business)",
+      "operation": "Run script",
+      "notes": [
+        "Select the workbook containing MRB and Members sheets.",
+        "Script: GetTodayMRBAttendees"
+      ]
+    },
+    {
+      "name": "Parse JSON",
+      "type": "Data Operations",
+      "operation": "Parse JSON",
+      "content": "body/result from Run script",
+      "schemaFile": "power-automate/parse-json-schema.json"
+    },
+    {
+      "name": "Apply to each attendee",
+      "type": "Control",
+      "input": "attendees from Parse JSON",
+      "children": [
+        {
+          "name": "Post private Teams message",
+          "type": "Microsoft Teams",
+          "operation": "Post message in a chat or channel",
+          "settings": {
+            "postAs": "Flow bot",
+            "postIn": "Chat with Flow bot",
+            "recipient": "Body email",
+            "message": "Body message"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Post group summary",
+      "type": "Microsoft Teams",
+      "operation": "Post message in a chat or channel",
+      "settings": {
+        "postAs": "Flow bot",
+        "postIn": "Group chat",
+        "groupChat": "Select the target group chat in Power Automate",
+        "message": "Body groupMessage"
+      }
+    }
+  ]
+}
