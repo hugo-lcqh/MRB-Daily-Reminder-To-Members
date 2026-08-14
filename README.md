@@ -48,6 +48,7 @@ mrb-teams-reminder-flow/
 ├─ power-automate/
 │  └─ parse-json-schema.json
 ├─ docs/
+│  ├─ architecture.md
 │  ├─ workflow-setup-guide.md
 │  ├─ workflow-overview.md
 │  └─ troubleshooting.md
@@ -67,6 +68,8 @@ Recurrence
    -> Post private Teams message
 -> Post group summary Teams message
 ```
+
+For the full component diagram, data flow, output contract, and troubleshooting map, see [docs/architecture.md](docs/architecture.md).
 
 ## Script Output
 

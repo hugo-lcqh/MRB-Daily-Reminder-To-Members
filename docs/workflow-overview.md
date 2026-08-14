@@ -1,5 +1,7 @@
 # Workflow Overview
 
+For the complete architecture, including component responsibilities, data flow, and common failure modes, see [architecture.md](architecture.md).
+
 ## Flow
 
 ```text
